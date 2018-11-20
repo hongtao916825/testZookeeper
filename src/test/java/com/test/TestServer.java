@@ -11,7 +11,7 @@ public class TestServer {
         ZkConfig zkConfig = new ZkConfig();
         zkConfig.setGroup("test1");
         zkConfig.setVersion("2.0");
-        Configration configration = new Configration("test","testUrl","aa123456");
+        Configration configration = new Configration("test","testUrl","aa1456");
         ZkConfingServer server = new ZkConfingServer(zkConfig,configration);
         server.setData();
     }

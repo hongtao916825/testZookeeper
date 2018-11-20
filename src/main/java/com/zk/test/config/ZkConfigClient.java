@@ -43,9 +43,7 @@ public class ZkConfigClient extends CuratorCrud {
          * 监听数据节点的变化情况
          */
         String path = Contant.NODE_PATH + zkConfig.getConfigPath();
-        ExecutorService pool = Executors.newFixedThreadPool(2);
-        final NodeCache nodeCache = new NodeCache(this.getCf(), path, false);
-        nodeCache.start(true);
+        final NodeCache nodeCache = new NodeCache(this.getCf(), path);
         nodeCache.getListenable().addListener(
                 new NodeCacheListener() {
                     @Override
@@ -54,10 +52,9 @@ public class ZkConfigClient extends CuratorCrud {
                         System.out.println("Node data is changed, new data: " +
                                 new String(nodeCache.getCurrentData().getData()));
                     }
-                },
-                pool
+                }
         );
-        Thread.sleep(Integer.MAX_VALUE);
+        nodeCache.start(true);
     }
 
 }
