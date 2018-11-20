@@ -23,12 +23,8 @@ public class Test {
       zkConfigClient.init();
       zkConfigClient.createListener();
       while (true) {
-         try {
-            System.out.println(JSON.toJSONString(Contant.configration));
-            Thread.sleep(10 * 1000);
-         } catch (InterruptedException e) {
-            e.printStackTrace();
-         }
+         System.out.println(JSON.toJSONString(Contant.configration));
+         Thread.sleep(10 * 1000);
       }
    }
 }
